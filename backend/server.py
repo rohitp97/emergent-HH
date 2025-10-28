@@ -221,6 +221,10 @@ async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(s
         raise HTTPException(status_code=401, detail="Invalid authentication")
 
 # Auth Routes
+@api_router.get("/")
+async def root():
+    return {"message": "HospitalityHub API v1.0", "status": "running"}
+
 @api_router.post("/auth/register", response_model=TokenResponse)
 async def register(req: RegisterRequest):
     # Check if user exists
