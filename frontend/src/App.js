@@ -206,6 +206,17 @@ const AuthPage = () => {
   const { login } = useAuth();
   const [loading, setLoading] = useState(false);
 
+  // Reset form data when switching between login/register
+  useEffect(() => {
+    setFormData({
+      phone: "",
+      password: "",
+      name: "",
+      email: "",
+      role: "worker"
+    });
+  }, [isLogin]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
